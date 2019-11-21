@@ -1,11 +1,9 @@
 Base path: /Applications/Unity/Hub/Editor/2018.4.11f1/Unity.app/Contents
 Cmd: initializeCompiler
-Cmd: compileComputeKernel
-  api=14 insize=1957 outsize=1997 ok=1
-Cmd: initializeCompiler
-Cmd: initializeCompiler
-Cmd: initializeCompiler
-Cmd: initializeCompiler
+Cmd: disassembleShader
+  api=14 insize=1542 outsize=1494 ok=1
+Cmd: disassembleShader
+  api=14 insize=1331 outsize=1283 ok=1
 Cmd: initializeCompiler
 Cmd: initializeCompiler
 Cmd: initializeCompiler

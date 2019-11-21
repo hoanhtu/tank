@@ -1,0 +1,49 @@
+using UnityEngine;
+
+#if UNITY_EDITOR
+using UnityEditor;
+
+namespace Destructible2D
+{
+	[CanEditMultipleObjects]
+	[CustomEditor(typeof(D2dLeanSpawner))]
+	public class D2dLeanSpawner_Editor : D2dEditor<D2dLeanSpawner>
+	{
+		protected override void OnInspector()
+		{
+			BeginError(Any(t => t.Prefab == null));
+				DrawDefault("Prefab");
+			EndError();
+			DrawDefault("SpawnInStart");
+			DrawDefault("Intercept");
+		}
+	}
+}
+#endif
+
+namespace Destructible2D
+{
+	[AddComponentMenu(D2dHelper.ComponentMenuPrefix + "Lean Spawner")]
+	public class D2dLeanSpawner : D2dSpawner
+	{
+		[Tooltip("The z position the prefab should spawn at")]
+		public float Intercept;
+
+		public void SpawnAt(Lean.Touch.LeanFinger finger)
+		{
+			if (Prefab != null && isActiveAndEnabled == true)
+			{
+				// Main camera exists?
+				var mainCamera = Camera.main;
+
+				if (mainCamera != null)
+				{
+					// World position of the mouse
+					var position = D2dHelper.ScreenToWorldPosition(finger.ScreenPosition, Intercept, mainCamera);
+
+					Instantiate(Prefab, position, transform.rotation);
+				}
+			}
+		}
+	}
+}

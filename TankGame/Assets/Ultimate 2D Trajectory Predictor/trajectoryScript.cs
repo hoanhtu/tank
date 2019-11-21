@@ -32,6 +32,9 @@ public class trajectoryScript : MonoBehaviour {
 	public GameObject[] dots;					//The array of points that make up the trajectory
 	public bool mask;
 	private BoxCollider2D[] dotColliders;
+    public GameObject projectile;
+    private GameObject projectile1;
+    private bool flag = false;
 
 	void Start () {
 		ball = gameObject;											//Script has to be applied to the "ball"
@@ -120,6 +123,12 @@ public class trajectoryScript : MonoBehaviour {
 		if ((Input.GetKey (KeyCode.Mouse0) && ballIsClicked == true) && ((ballRB.velocity.x == 0f && ballRB.velocity.y == 0f) || (grabWhileMoving == true))) {	//If player has activated a shot										//when you press down
 			ballIsClicked2 = true;												//Final step of activation is complete
 
+            if (flag == false)
+            {
+                flag = true;
+                projectile1 = Instantiate(projectile, transform.position, transform.rotation) as GameObject;
+                projectile1.GetComponent<Rigidbody2D>().isKinematic = true;
+            }
 			if (usingHelpGesture == true) {										//If you're using the Help Gesture...
 				idleTimer = idleTime;											//It is reset
 				helpGesture.GetComponent<Animator> ().SetBool ("Inactive", false);	//If the animation is playing, it will stop
@@ -128,10 +137,10 @@ public class trajectoryScript : MonoBehaviour {
 			fingerPos = Camera.main.ScreenToWorldPoint (Input.mousePosition); 	//The position of your finger/cursor is found
 			fingerPos.z = 0;													//The z position is set to 0
 
-			if (grabWhileMoving == true) {										//If you've enabled shooting while the ball is moving
-				ballRB.velocity = new Vector2 (0f, 0f);							//The "ball" stops moving
-				ballRB.isKinematic = true;										//The "ball" isn't affected by other forces (it stays in the same spot)
-		}
+			//if (grabWhileMoving == true) {										//If you've enabled shooting while the ball is moving
+			//	ballRB.velocity = new Vector2 (0f, 0f);							//The "ball" stops moving
+			//	ballRB.isKinematic = true;										//The "ball" isn't affected by other forces (it stays in the same spot)
+		 //       }
 
 			ballFingerDiff = ballPos - fingerPos;								//The distance between the finger/cursor and the "ball" is found
 			
@@ -173,6 +182,12 @@ public class trajectoryScript : MonoBehaviour {
                 //{                           //If the "ball" was kinematic...
                 //    ballRB.isKinematic = false;                             //It's no longer kinematic
                 //}
+                projectile1.GetComponent<Rigidbody2D>().isKinematic = false;
+                projectile1.GetComponent<Rigidbody2D>().AddForce(shotForce, ForceMode2D.Impulse);
+                flag = false;
+                projectile1 = null;
+
+
             }
         }
     }
