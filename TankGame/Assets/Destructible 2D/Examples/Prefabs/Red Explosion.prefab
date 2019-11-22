@@ -31,8 +31,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 100000}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.34, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 3.5, y: -0.4, z: 0}
+  m_LocalScale: {x: 0.85315657, y: 0.85315657, z: 0.85315657}
   m_Children:
   - {fileID: 482708}
   m_Father: {fileID: 0}
@@ -4737,11 +4737,11 @@ MonoBehaviour:
     m_Bits: 4294967295
   Stamp: 1
   StampTex: {fileID: 2800000, guid: fef0ca7c77c683d4da0b22b25f9ed8ad, type: 3}
-  StampSize: {x: 3, y: 3}
+  StampSize: {x: 6, y: 6}
   StampHardness: 1
   StampRandomDirection: 1
   Raycast: 1
-  RaycastRadius: 1
+  RaycastRadius: 1.66
   RaycastCount: 32
   ForcePerRay: 20
   DamagePerRay: 1
@@ -5177,7 +5177,7 @@ ParticleSystem:
         m_RotationOrder: 4
     startSizeY:
       serializedVersion: 2
-      minMaxState: 0
+      minMaxState: 3
       scalar: 1
       minScalar: 1
       maxCurve:
@@ -5230,7 +5230,7 @@ ParticleSystem:
         m_RotationOrder: 4
     startSizeZ:
       serializedVersion: 2
-      minMaxState: 0
+      minMaxState: 3
       scalar: 1
       minScalar: 1
       maxCurve:

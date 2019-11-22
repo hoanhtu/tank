@@ -5,7 +5,7 @@ using UnityEngine;
 public class TankController2 : MonoBehaviour
 {
     public Rigidbody2D Rb;
-    private float speed=6;
+    public float speed=6;
     private float velx;
     private float vely;
     private Animator anim;
