@@ -5,7 +5,7 @@ using UnityEngine;
 public class TankController2 : MonoBehaviour
 {
     public Rigidbody2D Rb;
-    public float speed=6;
+    public float speed = 6;
     private float velx;
     private float vely;
     private Animator anim;
@@ -23,11 +23,11 @@ public class TankController2 : MonoBehaviour
     {
         velx = Input.GetAxis("Horizontal");
         vely = Rb.velocity.y;
-        Rb.velocity = new Vector2(velx*speed,vely);
+        Rb.velocity = new Vector2(velx * speed, vely);
 
 
         Debug.Log(Rb.position);
-        if(velx == 0)
+        if (velx == 0)
         {
             anim.SetBool("isRunning", false);
 
