@@ -182,11 +182,14 @@ public class trajectoryScript : MonoBehaviour {
                 //{                           //If the "ball" was kinematic...
                 //    ballRB.isKinematic = false;                             //It's no longer kinematic
                 //}
-                projectile1.GetComponent<Rigidbody2D>().isKinematic = false;
-                projectile1.GetComponent<Rigidbody2D>().AddForce(shotForce, ForceMode2D.Impulse);
+                if (projectile1 != null)
+                {
+                    projectile1.GetComponent<Rigidbody2D>().isKinematic = false;
+                    projectile1.GetComponent<Rigidbody2D>().AddForce(shotForce, ForceMode2D.Impulse);
+                    
+                }
                 flag = false;
                 projectile1 = null;
-
 
             }
         }

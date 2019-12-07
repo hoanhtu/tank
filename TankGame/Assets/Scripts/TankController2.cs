@@ -25,9 +25,12 @@ public class TankController2 : MonoBehaviour
         vely = Rb.velocity.y;
         Rb.velocity = new Vector2(velx*speed,vely);
 
+
+        Debug.Log(Rb.position);
         if(velx == 0)
         {
             anim.SetBool("isRunning", false);
+
         }
         else
             anim.SetBool("isRunning", true);
